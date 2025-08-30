@@ -47,7 +47,7 @@ ktor = [
 [plugins]
 gitSemVer = { id = "org.danilopianini.git-sensitive-semantic-versioning", version.ref = "gitSemVer" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-kotlin-qa = "org.danilopianini.gradle-kotlin-qa:0.93.0"
+kotlin-qa = "org.danilopianini.gradle-kotlin-qa:0.93.3"
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinxSerialization" }
