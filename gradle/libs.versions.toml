@@ -2,14 +2,18 @@
 gitSemVer = "5.1.3"
 kotlin = "2.2.0"
 dokka = "2.0.0"
+kotest = "5.9.1"
 
-ktor                  = "3.2.3"
+ktor = "3.2.3"
 kotlinxSerialization = "1.9.0"
-coroutines            = "1.10.2"
-logback               = "1.5.18"
-kmongo                = "5.2.1"
+coroutines = "1.10.2"
+logback = "1.5.18"
+kmongo = "5.2.1"
 
 [libraries]
+kotest-junit5-jvm = { module = "io.kotest:kotest-runner-junit5-jvm", version.ref = "kotest" }
+kotest-assertions-core-jvm = { module = "io.kotest:kotest-assertions-core-jvm", version.ref = "kotest" }
+
 ktor-server-core-jvm = { group = "io.ktor", name = "ktor-server-core-jvm", version.ref = "ktor" }
 ktor-server-netty-jvm = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
 ktor-server-content-negotiation-jvm = { module = "io.ktor:ktor-server-content-negotiation-jvm", version.ref = "ktor" }
@@ -26,6 +30,11 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 
 
 [bundles]
+kotlin-testing = [
+    "kotest-junit5-jvm",
+    "kotest-assertions-core-jvm",
+]
+
 ktor = [
     "ktor-server-core-jvm",
     "ktor-server-netty-jvm",
@@ -36,10 +45,10 @@ ktor = [
 ]
 
 [plugins]
-gitSemVer  = { id = "org.danilopianini.git-sensitive-semantic-versioning", version.ref = "gitSemVer" }
+gitSemVer = { id = "org.danilopianini.git-sensitive-semantic-versioning", version.ref = "gitSemVer" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-kotlin-qa  = "org.danilopianini.gradle-kotlin-qa:0.93.0"
-dokka      = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+kotlin-qa = "org.danilopianini.gradle-kotlin-qa:0.93.0"
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinxSerialization" }
 

@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.dokka)
     alias(libs.plugins.kotlin.qa)
     alias(libs.plugins.kotlin.serialization)
+    application
 }
 
 repositories {
@@ -19,6 +20,7 @@ buildscript {
 }
 
 dependencies {
+    testImplementation(libs.bundles.kotlin.testing)
     implementation(libs.bundles.ktor)
     implementation(libs.logback.classic)
     implementation(libs.kotlinx.coroutines.core)
@@ -35,5 +37,24 @@ kotlin {
     compilerOptions {
         allWarningsAsErrors = true
         freeCompilerArgs = listOf("-opt-in=kotlin.RequiresOptIn")
+    }
+}
+
+application {
+    // Replace with your main class
+    mainClass.set("domain.TestKt")
+}
+
+tasks.test {
+    useJUnitPlatform()
+    testLogging {
+        showStandardStreams = true
+        showCauses = true
+        showStackTraces = true
+        events(
+            *org.gradle.api.tasks.testing.logging.TestLogEvent
+                .values(),
+        )
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
     }
 }
